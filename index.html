@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-
 <html>
-   <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-      <base target="_top">
-   </head>
-   <body>
-      <iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;border: 0;" src="https://script.google.com/macros/s/AKfycbyobIzX5N86z8TJ6-cmx3RdY_A7lE3-no48l6itygUBc_7_be3qDHDimdPXcLXslh8kyw/exec"></iframe>
-   </body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PWA + Apps Script</title>
+    <style>
+      body { font-family: sans-serif; padding: 20px; }
+      #result { background: #f0f0f0; padding: 10px; border-radius: 8px; }
+    </style>
+  </head>
+  <body>
+    <h2>ข้อมูลจาก Apps Script</h2>
+    <div id="result">กำลังโหลด...</div>
+
+    <script>
+      // เปลี่ยนเป็น URL ของ Web App ของคุณเอง
+      const url = "https://script.google.com/macros/s/AKfycbyobIzX5N86z8TJ6-cmx3RdY_A7lE3-no48l6itygUBc_7_be3qDHDimdPXcLXslh8kyw/exec";
+
+      fetch(url)
+        .then(response => response.text()) // หรือ .json() ถ้าเป็น JSON
+        .then(data => {
+          document.getElementById("result").textContent = data;
+        })
+        .catch(error => {
+          document.getElementById("result").textContent = "เกิดข้อผิดพลาด: " + error;
+          console.error(error);
+        });
+    </script>
+  </body>
 </html>
